@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Model\ItemManager;
 
+use function App\Mail\sendEmail;
+
 class ItemController extends AbstractController
 {
     /**
@@ -90,5 +92,37 @@ class ItemController extends AbstractController
 
             header('Location:/items');
         }
+    }
+
+    // report
+
+    public function report()
+    {
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $form = array_map('trim', $_POST);
+            $form = array_map('htmlentities', $form);
+            
+            if (empty($form['message'])) {
+                $errors[] = 'Merci de décrire l\'erreur repérée';
+            }
+            
+            if (empty($errors)) {
+                //envoi e-mail
+
+                require_once __DIR__ . '/../mail.php';
+
+                // if (sendEmail($form)) {
+                //     echo 'Merci, votre message a bien été envoyé.';
+                //     header('refresh:3; url=/items'); //voir pour cacher formulaire
+                // } else {
+                //     $errors[] = "Une erreur est survenue, merci de réessayer ultérieurement.";
+                // }
+            }
+        }
+
+        return $this->twig->render('Item/report.html.twig', ['errors' => $errors]);
     }
 }
