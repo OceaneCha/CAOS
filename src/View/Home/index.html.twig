@@ -1,28 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Welcome to the caos quiz !
-    <form method="POST" action="traitement.php">
-    <p>Choisissez un thème :</p>
-    <input type="radio" name="cinéma" value="1" id="theme1">
-    <label for="theme1">Cinema</label><br>
-    <input type="radio" name="astrologie" value="2" id="theme2">
-    <label for="theme2">Astrologie</label><br>
-    <input type="radio" name="cuisine" value="3" id="theme3">
-    <label for="theme3">Cuisine</label><br>
-    <input type="radio" name="musique" value="4" id="theme4">
-    <label for="theme4">Musique</label><br>
-    <input type="radio" name="promo" value="5" id="theme5">
-    <label for="theme5">Promo</label><br>
-    <input type="radio" name="animaux" value="6" id="theme6">
-    <label for="theme6">Animaux</label><br>
-    <input type="radio" name="geographie" value="7" id="theme7">
-    <label for="theme7">Geographie</label><br>
-    <input type="radio" name="astronomie" value="8" id="theme8">
-    <label for="theme8">Astronomie</label><br>
-    <br>
-    <input type="submit" value="Envoyer">
-</form>
-    </h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+    {% include 'header.html.twig' %}
+        <h1>Hello Wilder !</h1>
+        <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
 {% endblock %}
