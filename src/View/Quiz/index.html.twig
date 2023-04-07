@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    
+
+    <h1>Quiz </h1>
+
+   
+    
+    <ul>
+
+    {% for question in questions %}
+        <li>{{ question.title }}</li>
+         
+
+        
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+       
+    </ul>
+    <a href="/">Accueil</a>
+{% endblock %}
