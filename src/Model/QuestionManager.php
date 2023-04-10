@@ -18,4 +18,42 @@ class QuestionManager extends AbstractManager
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    public function add(array $form): void
+    {
+        $query = "INSERT INTO " . self::TABLE . " (title, theme_id) VALUES (:title, :theme_id)";
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->bindValue(':title', $form['title']);
+        $stmt->bindValue(':theme_id', $form['theme_id'], \PDO::PARAM_INT);
+
+        $questionID = 0;
+        try {
+            $stmt->execute();
+            $questionID = $this->pdo->lastInsertId();
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        foreach ($form['answers'] as $id => $answer) {
+            $query = "INSERT INTO " . AnswerManager::TABLE . " (title, question_id, isCorrect)
+                VALUES (:title, :question_id, :isCorrect)";
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindValue(':title', $answer);
+            $stmt->bindValue(':question_id', $questionID, \PDO::PARAM_INT);
+            if ($id == $form['correctAnswer']) {
+                $isCorrect = 1;
+            } else {
+                $isCorrect = 0;
+            }
+            $stmt->bindValue(':isCorrect', $isCorrect, \PDO::PARAM_INT);
+
+            try {
+                $stmt->execute();
+            } catch (\PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+    }
 }

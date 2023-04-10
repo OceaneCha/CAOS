@@ -14,4 +14,7 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     '' => ['ThemeController', 'index',],
+    'add' => ['HomeController', 'add',],
+    'add/theme' => ['ThemeController', 'add',],
+    'add/question' => ['QuestionController', 'add',],
 ];
