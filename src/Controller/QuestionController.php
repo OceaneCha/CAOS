@@ -21,7 +21,6 @@ class QuestionController extends AbstractController
     public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            var_dump($_POST);
             //TODO: call service->validate
             $question = [];
             $question['theme_id'] = $_POST['theme_id'];
