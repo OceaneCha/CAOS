@@ -13,34 +13,40 @@ class QuestionManager extends AbstractManager
 
     public function showQuestions(int $id)
     {
-        $query = "SELECT q.id as qid ,q.title ,t.id as tid FROM question q RIGHT JOIN theme t ON t.id = q.theme_id WHERE q.theme_id =$id";
+        $query = "SELECT q.id as qid ,q.title ,t.id as tid 
+                  FROM question q 
+                  RIGHT JOIN theme t ON t.id = q.theme_id 
+                  WHERE q.theme_id =$id
+                  ";
         $statement = $this->pdo->query($query);
-       // $statement ->execute();
         
-       
-        $questions= $statement->fetchAll(PDO::FETCH_OBJ);
+        $questions = $statement->fetchAll(PDO::FETCH_OBJ);
         //var_dump($questions);
-
-        foreach($questions as $question) {
-            echo "<div>$question->title.' '.$question->qid </div>";
-           
+       /* 
+        foreach ($questions as $question) {
+            echo" $question->title . ' ' . $question->qid" ;
+            echo "<br>";
+        
             $queryAnswer = "SELECT * FROM answer WHERE question_id = $question->qid";
             $statement = $this->pdo->query($queryAnswer);
-            // $statement ->execute();
+            $answers = $statement->fetchAll(PDO::FETCH_OBJ);
              
-            
-             $answers= $statement->fetchAll(PDO::FETCH_OBJ);
-             foreach($answers as $answer){
-                echo "<div>$answer->title.' '.$answer->id </div>";
-             }
-
-             echo"<hr>";
-
+            foreach ($answers as $answer) {
+                echo"$answer->title . ' ' . $answer->id ";
+              
+            } 
+            echo "<br>";
         }
-     // return $questions;
-        
-    }
-
+*/
+        return $questions;
+        /*
+        $quiz = [$questions, $answers];
+        var_dump($quiz);
+        return $quiz;
+        */
+    }      
+}
+/*
     // fetch the right Answer instance
     public function getCorrectAnswer()
     {
@@ -49,8 +55,5 @@ class QuestionManager extends AbstractManager
         $stmt->execute();
         return $stmt->fetch();
     }
-
-   
-
-
-}
+    */
+//}

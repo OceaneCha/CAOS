@@ -3,7 +3,7 @@
 {% block content %}
     
 
-    <h1>Quiz </h1>
+    <h1>Quiz {{theme.name}} </h1>
 
    
     
@@ -11,12 +11,14 @@
 
     {% for question in questions %}
         <li>{{ question.title }}</li>
-         
+       
+        {% for answer in answers %}
+            <p>{{ answer.title }}</p>  
 
-        
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
+    {% endfor %}    
        
     </ul>
     <a href="/">Accueil</a>
