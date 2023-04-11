@@ -36,24 +36,12 @@ class QuestionManager extends AbstractManager
         }
 
         foreach ($form['answers'] as $id => $answer) {
-            $query = "INSERT INTO " . AnswerManager::TABLE . " (title, question_id, isCorrect)
-                VALUES (:title, :question_id, :isCorrect)";
-            $stmt = $this->pdo->prepare($query);
-
-            $stmt->bindValue(':title', $answer);
-            $stmt->bindValue(':question_id', $questionID, \PDO::PARAM_INT);
+            $isCorrect = 0;
             if ($id == $form['correctAnswer']) {
                 $isCorrect = 1;
-            } else {
-                $isCorrect = 0;
             }
-            $stmt->bindValue(':isCorrect', $isCorrect, \PDO::PARAM_INT);
-
-            try {
-                $stmt->execute();
-            } catch (\PDOException $e) {
-                echo $e->getMessage();
-            }
+            $answerManager = new AnswerManager();
+            $answerManager->add($answer, $questionID, $isCorrect);
         }
     }
 }
