@@ -1,25 +1,22 @@
-{% extends 'layout.html.twig' %}
+ {% extends 'layout.html.twig' %}
 
 {% block content %}
-    
-
-    <h1>Quiz {{theme.name}} </h1>
-
-   
+    <h1>Quiz {{ theme.name }}</h1>
     
     <ul>
-
     {% for question in questions %}
         <li>{{ question.title }}</li>
-       
-        {% for answer in answers %}
-            <p>{{ answer.title }}</p>  
-
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    {% endfor %}    
-       
+        <ul>
+            {% for answer in question.answers %}
+                <li>{{ answer.title }}</li>
+            {% else %}
+                <li>Nothing to display</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <li>No questions to display</li>
+    {% endfor %}
     </ul>
+    
     <a href="/">Accueil</a>
 {% endblock %}

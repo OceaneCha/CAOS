@@ -3,22 +3,20 @@
 namespace App\Model;
 
 use PDO;
-use App\Model\QuestionManager;
+//use App\Model\QuestionManager;
 
 class AnswerManager extends AbstractManager
 {
     public const TABLE = 'answer';
 
-
     public function getAnswers(int $qid)
     {
-        $queryAnswer = "SELECT * FROM answer WHERE question_id = $qid";
-            $statement = $this->pdo->query($queryAnswer);
-            $answers = $statement->fetchAll(PDO::FETCH_OBJ);
-
-        foreach ($answers as $answer) {
-                echo"$answer->title . ' ' . $answer->id ";
-        }
-        return $answers ;
+        $queryAnswer = "SELECT * FROM " . self::TABLE . " WHERE question_id = :qid";
+        $statement = $this->pdo->prepare($queryAnswer);
+        $statement->bindValue(':qid', $qid, PDO::PARAM_INT);
+        $statement->execute();
+        $answers = $statement->fetchAll(PDO::FETCH_OBJ);
+        return $answers;
     }
+
 }
