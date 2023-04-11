@@ -14,3 +14,32 @@ body {
 
 
 }
+.message{
+    display:flex;
+    font-style: bold;
+    font-size: 2em;
+    
+    
+    
+}
+.red{
+    color:rgb(232, 32, 32);
+    margin: 0.2em;
+   
+}
+
+.yellow{
+    color :rgb(245, 230, 62);
+    margin: 0.2em;
+   
+}
+
+.blue{
+    color :rgb(7, 7, 107);
+    margin: 0.2em;
+}
+
+.green{
+    color:rgb(179, 241, 169);
+    margin: 0.2em;
+}

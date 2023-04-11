@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Model\ThemeManager;
+use App\Model\QuestionManager;
+use App\Model\AnswerManager;
 
 class ThemeController extends AbstractController
 {
@@ -24,7 +26,12 @@ class ThemeController extends AbstractController
     {
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
+        $questionManager = new QuestionManager();
+        $questions = $questionManager->showQuestions($id);
+       // $answersManager = new AnswerManager();
+       // $answers = $answersManager->getAnswers();
 
-        return $this->twig->render('Quiz/index.html.twig', ['theme' => $theme]);
+        $twigArgs = ['theme' => $theme, 'questions' => $questions];
+        return $this->twig->render('Quiz/index.html.twig', $twigArgs);
     }
 }
