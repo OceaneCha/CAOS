@@ -26,12 +26,15 @@ class ThemeController extends AbstractController
     {
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
+
         $questionManager = new QuestionManager();
         $questions = $questionManager->showQuestions($id);
-       // $answersManager = new AnswerManager();
-       // $answers = $answersManager->getAnswers();
 
-        $twigArgs = ['theme' => $theme, 'questions' => $questions];
+        $answersManager = new AnswerManager();
+        $answers = $answersManager->getAnswers($id);
+
+        $twigArgs = ['theme' => $theme, 'questions' => $questions, 'answers' => $answers];
+        
         return $this->twig->render('Quiz/index.html.twig', $twigArgs);
     }
 }
