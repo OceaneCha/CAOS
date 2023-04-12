@@ -23,6 +23,7 @@ class QuestionManager extends AbstractManager
         }
 
         return $questions;
+<<<<<<< HEAD
     }
 }
 /*
@@ -33,6 +34,7 @@ class QuestionManager extends AbstractManager
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetch();
+=======
+>>>>>>> d84d4ae9164715c9ab18af85cb080a31c9ba8ad0
     }
-    */
-//}
+}
