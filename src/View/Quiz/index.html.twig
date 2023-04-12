@@ -1,25 +1,37 @@
-{% extends 'layout.html.twig' %}
+ {% extends 'layout.html.twig' %}
 
 {% block content %}
-    
+<div class='formContainer'>
+    <h1>Quiz {{ theme.name }}</h1>
 
-    <h1>Quiz {{theme.name}} </h1>
-
-   
-    
+     <form class='form' method="POST" >
     <ul>
-
+   
     {% for question in questions %}
         <li>{{ question.title }}</li>
-       
-        {% for answer in answers %}
-            <p>{{ answer.title }}</p>  
+        
+        <ul>
+            {% for answer in question.answers %}
+            <div>
+                <input type="radio" name="{{question.id}}" value="{{answer.isCorrect}}">{{ answer.title }}
+            </div>    
+            {% else %}
+                <li>Nothing to display</li>
+            {% endfor %}
+        </ul>
+        
+    {% else %}
+        <li>No questions to display</li>
+    {% endfor %}
 
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    {% endfor %}    
-       
     </ul>
+    <div>
+        <button type="submit" class="btn btn-primary">J'envoie</button>
+    </div>
+    </form>
+    </div>
+    
+    {{ app.request.parameter.get('question.id') }}
+    
     <a href="/">Accueil</a>
 {% endblock %}
