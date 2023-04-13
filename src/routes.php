@@ -14,5 +14,5 @@ return ['items' => ['ItemController', 'index',],
     '' => ['ThemeController', 'index',],
     'themes' => ['ThemeController', 'show', ['id']],
     'quiz' => ['QuizController', 'index',],
-    'quiz/result' => ['ResultController', 'result']
+    'quiz/result' => ['ResultController', 'result',],
 ];
