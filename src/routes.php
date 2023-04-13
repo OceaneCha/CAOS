@@ -13,5 +13,6 @@ return ['items' => ['ItemController', 'index',],
     'items/delete' => ['ItemController', 'delete',],
     '' => ['ThemeController', 'index',],
     'themes' => ['ThemeController', 'show', ['id']],
-    'quiz' => ['QuizController', 'index',]
+    'quiz' => ['QuizController', 'index',],
+    'quiz/result' => ['ResultController', 'result']
 ];
