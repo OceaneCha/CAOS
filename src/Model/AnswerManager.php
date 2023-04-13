@@ -19,8 +19,4 @@ class AnswerManager extends AbstractManager
         return $answers;
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d84d4ae9164715c9ab18af85cb080a31c9ba8ad0

@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class='formContainer'>
+    <h1>Résultats du quiz {{ theme.name }}</h1>
+    <p>Votre score est de : {{ results.score }} sur {{ questions|length }}</p>
+
+    <ul>
+        {% for question in questions %}
+            <li>{{ question.title }}</li>
+
+            {% if results.answers[question.id] is defined %}
+                <ul>
+                    {% for answer in question.answers %}
+                        {% if answer.id == results.answers[question.id] %}
+                            {% if answer.isCorrect %}
+                                <li class="correct">{{ answer.title }}</li>
+                            {% else %}
+                                <li class="incorrect">{{ answer.title }}</li>
+                            {% endif %}
+                        {% else %}
+                            <li>{{ answer.title }}</li>
+                        {% endif %}
+                    {% else %}
+                        <li>Aucune réponse enregistrée</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <li>Aucune réponse enregistrée</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <a href="/">Accueil</a>
+</div>
+{% endblock %}

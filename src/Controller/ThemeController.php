@@ -27,16 +27,6 @@ class ThemeController extends AbstractController
 
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
-<<<<<<< HEAD
-
-        $questionManager = new QuestionManager();
-        $questions = $questionManager->showQuestions($id);
-
-        $answersManager = new AnswerManager();
-        $answers = $answersManager->getAnswers($id);
-
-        $twigArgs = ['theme' => $theme, 'questions' => $questions, 'answers' => $answers];
-=======
         
         $questionManager = new QuestionManager();
         $questions = $questionManager->showQuestions($id);
@@ -49,7 +39,6 @@ class ThemeController extends AbstractController
             'questions' => $questions,
              'answers' => $answers
         ];
->>>>>>> d84d4ae9164715c9ab18af85cb080a31c9ba8ad0
         
         return $this->twig->render('Quiz/index.html.twig', $twigArgs);
     }

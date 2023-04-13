@@ -55,3 +55,32 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+ul {
+    list-style: none;
+}
+
+li {
+    list-style: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+label:hover {
+    background-color: #ddd;
+}
+
+.radio {
+    display: none;
+}
+
+.radio:checked + .answer-option {
+    background-color: grey;
+    color: #fff;
+}
