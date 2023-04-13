@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use PDO;
-//use App\Model\QuestionManager;
 
 class AnswerManager extends AbstractManager
 {
@@ -18,9 +17,4 @@ class AnswerManager extends AbstractManager
         $answers = $statement->fetchAll(PDO::FETCH_OBJ);
         return $answers;
     }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d84d4ae9164715c9ab18af85cb080a31c9ba8ad0

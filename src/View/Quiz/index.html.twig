@@ -5,13 +5,13 @@
     <h1>Quiz {{ theme.name }}</h1>
 
      <form class='form' method="POST" >
-    <ul>
+            <ul>
    
-    {% for question in questions %}
-        <li>{{ question.title }}</li>
+                {% for question in questions %}
+                <li>{{ question.title }}</li>
         
-        <ul>
-            {% for answer in question.answers %}
+             <ul>
+                    {% for answer in question.answers %}
             <div>
                 <input type="radio" name="{{question.id}}" value="{{answer.isCorrect}}">{{ answer.title }}
             </div>    

@@ -1,5 +1,7 @@
 body {
     color: #f76c6c;
+    background-image: url('public\assets\images\quizz.png');
+    
 }
 
 .logo{
@@ -22,7 +24,7 @@ body {
     
     
 }
-.red{
+.red ,h1{
     color:rgb(232, 32, 32);
     margin: 0.2em;
    
@@ -54,4 +56,13 @@ body {
     display:flex;
     flex-direction: column;
     align-items: center;
+}
+
+.themes{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3em;
+    
+
 }
