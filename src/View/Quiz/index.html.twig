@@ -4,7 +4,7 @@
 <div class='formContainer'>
     <h1>Quiz {{ theme.name }}</h1>
 
-     <form class='form' method="POST" action="" >
+     <form class='form' method="POST" action="/quiz/result" >
     <ul>
    
 {% for question in questions %}
@@ -28,12 +28,12 @@
 {% endfor %}
     </ul>
     <div>
-        <button type="submit" class="btn btn-primary">J'envoie</button>
+        <button type="submit" class="btn btn-primary" name="submit">J'envoie</button>
     </div>
     </form>
     </div>
     
-    {{ app.request.parameter.get('question.id') }}
+    {{ app.request.parameter.get('answer.id') }}
     
     <a href="/">Accueil</a>
 {% endblock %}
