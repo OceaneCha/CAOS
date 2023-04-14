@@ -12,7 +12,7 @@ class ResultController extends ThemeController
        // session_start();
         $reponses = $_POST;
         $score = 0;
-        var_dump($_POST);
+        // var_dump($_POST);
     
         // Récupération des réponses correctes
         $resultManager = new ResultManager();
