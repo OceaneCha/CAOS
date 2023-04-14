@@ -1,7 +1,5 @@
 body {
-    color: #f76c6c;
-    background-image: url('public\assets\images\quizz.png');
-    
+    color: white;
 }
 
 .logo{
@@ -13,9 +11,9 @@ body {
     font-size: 2em;
     color: rgb(111, 111, 238);
     font-style: bold;
-
-
+    background-image: url('../images/quizMan.webp');
 }
+
 .message{
     display:flex;
     font-style: bold;
@@ -24,7 +22,7 @@ body {
     
     
 }
-.red ,h1{
+.red {
     color:rgb(232, 32, 32);
     margin: 0.2em;
    
@@ -37,7 +35,7 @@ body {
 }
 
 .blue{
-    color :rgb(7, 7, 107);
+    color :rgb(145, 145, 237);
     margin: 0.2em;
 }
 
@@ -50,6 +48,12 @@ body {
     display:flex;
     align-items: center;
     flex-direction: column;
+    background-image: url('../images/musique.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 1.2em;
+    
+    
 }
 
 .form{
@@ -63,6 +67,9 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 3em;
-    
+    background-image: url('../images/quizMan.webp');
+}
 
+h1{
+    color:rgb(132, 191, 219);
 }
