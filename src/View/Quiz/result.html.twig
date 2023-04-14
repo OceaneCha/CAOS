@@ -3,19 +3,33 @@
 {% block content %}
 <div class='formContainer'>
     <h1>Résultats du quiz {{ theme.name }}</h1>
-    {# lengh -1 pour retirer le bouton submit du calcul du nombre de questions #} 
-    <p>Votre score est de : {{ score }} sur {{ questions|length -1 }}</p>
+    <p>Votre score est de : {{ score }} sur {{ questions|length }}</p>
 
-    {% for question in questions %}
-        <h2>{{ question.title }}</h2>
-        <ul>
+{# test #2 récupère les questions + réponses 
++ réponses récupérées en post 
+A faire : régler le problème des doublons en cas de mauvaise réponse #}
+
+{% for question in questions %}
+    <h2>{{ question.title }}</h2>
+    <ul>
         {% for answer in question.answers %}
-            {% if answer.isCorrect %}
-                <li class="correct">{{ answer.title }}</li>
+            {% if answer.id in reponses[question.id] %}
+                {% if answer.isCorrect %}
+                    <li class="correct">{{ answer.title }}</li>
+                {% else %}
+                    <li class="incorrect_selected">{{ answer.title }}</li>
+                    {% for correct_answer in question.answers %}
+                        {% if correct_answer.isCorrect %}
+                            <li class="correct_selected">{{ correct_answer.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% else %}
+                <li>{{ answer.title }}</li>
             {% endif %}
         {% endfor %}
-        </ul>
-    {% endfor %}
+    </ul>
+{% endfor %}    
 
     <a href="/">Accueil</a>
 </div>
