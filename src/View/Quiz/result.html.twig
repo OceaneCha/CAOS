@@ -1,35 +1,34 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div class='formContainer'>
-    <h1>Résultats du quiz {{ theme.name }}</h1>
-    <p>Votre score est de : {{ score }} sur {{ questions|length }}</p>
+    <div class='formContainer'>
+        <h1>Résultats du quiz {{ theme.name }}</h1>
+        <p>Votre score est de : {{ score }} sur {{ questions|length }}</p>
 
-{# test #2 récupère les questions + réponses 
-+ réponses récupérées en post #}
+        {# test #2 récupère les questions + réponses 
+        + réponses récupérées en post 
+        plus de doublon mais affichage wtf #}
 
-{% for question in questions %}
-    <h2>{{ question.title }}</h2>
-    <ul>
-        {% for answer in question.answers %}
-            {% if answer.id in reponses[question.id] %}
-                {% if answer.isCorrect %}
-                    <li class="correct">{{ answer.title }}</li>
-                {% else %}
-                    <li class="incorrect_selected">{{ answer.title }}</li>
-                    {% for correct_answer in question.answers %}
-                        {% if answer.isCorrect %}
-                            <li class="correct_selected">{{ correct_answer.title }}</li>
+        {% for question in questions %}
+            <h2>{{ question.title }}</h2>
+            <ul>
+                {% for answer in question.answers %}
+                    {% if answer.isCorrect %}
+                        {% if answer.id in reponses[question.id] %}
+                            <li class="correct">{{ answer.title }}</li>
+                        {% else %}
+                            <li class="correct_selected">{{ answer.title }}</li>
                         {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% else %}
-                <li>{{ answer.title }}</li>
-            {% endif %}
+                    {% elseif answer.id in reponses[question.id] %}
+                        <li class="incorrect_selected">{{ answer.title }}</li>
+                    {% else %}
+                        <li>{{ answer.title }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         {% endfor %}
-    </ul>
-{% endfor %}    
 
-    <a href="/">Accueil</a>
-</div>
+        <a href="/">Accueil</a>
+    </div>
 {% endblock %}
+
