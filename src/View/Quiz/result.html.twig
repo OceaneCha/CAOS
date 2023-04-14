@@ -3,7 +3,8 @@
 {% block content %}
 <div class='formContainer'>
     <h1>Résultats du quiz {{ theme.name }}</h1>
-    <p>Votre score est de : {{ score }} sur {{ questions|length }}</p>
+    {# lengh -1 pour retirer le bouton submit du calcul du nombre de questions #} 
+    <p>Votre score est de : {{ score }} sur {{ questions|length -1 }}</p>
 
     {% for question in questions %}
         <h2>{{ question.title }}</h2>
