@@ -6,8 +6,7 @@
     <p>Votre score est de : {{ score }} sur {{ questions|length }}</p>
 
 {# test #2 récupère les questions + réponses 
-+ réponses récupérées en post 
-A faire : régler le problème des doublons en cas de mauvaise réponse #}
++ réponses récupérées en post #}
 
 {% for question in questions %}
     <h2>{{ question.title }}</h2>
@@ -19,7 +18,7 @@ A faire : régler le problème des doublons en cas de mauvaise réponse #}
                 {% else %}
                     <li class="incorrect_selected">{{ answer.title }}</li>
                     {% for correct_answer in question.answers %}
-                        {% if correct_answer.isCorrect %}
+                        {% if answer.isCorrect %}
                             <li class="correct_selected">{{ correct_answer.title }}</li>
                         {% endif %}
                     {% endfor %}
