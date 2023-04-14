@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use App\Model\ResultManager;
 
-class ResultController extends AbstractController
+class ResultController extends ThemeController
 {
 
     public function result()
-    {
+    {   
+       // session_start();
         $questions = $_POST;
         $score = 0;
     
@@ -24,7 +25,6 @@ class ResultController extends AbstractController
                 $score++;
             }
         }
-
         //trouver comment retirer le $_post submit du calcul du résultat
     
 
