@@ -5,9 +5,8 @@
         <h1>Résultats du quiz {{ theme.name }}</h1>
         <p>Votre score est de : {{ score }} sur {{ questions|length }}</p>
 
-        {# test #2 récupère les questions + réponses 
-        + réponses récupérées en post 
-        plus de doublon mais affichage wtf #}
+        {# test #2 récupère les questions et réponses 
+        + réponses utilisateur #}
 
         {% for question in questions %}
             <h2>{{ question.title }}</h2>
