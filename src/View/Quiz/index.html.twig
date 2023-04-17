@@ -1,37 +1,39 @@
  {% extends 'layout.html.twig' %}
 
 {% block content %}
+{# {{app.session.all()}} #}
 <div class='formContainer'>
     <h1>Quiz {{ theme.name }}</h1>
-
-     <form class='form' method="POST" >
-            <ul>
+     <form class='form' method="POST" action="/quiz/result" >
+    <ul>
    
-                {% for question in questions %}
-                <li>{{ question.title }}</li>
-        
-             <ul>
-                    {% for answer in question.answers %}
-            <div>
-                <input type="radio" name="{{question.id}}" value="{{answer.isCorrect}}">{{ answer.title }}
-            </div>    
-            {% else %}
-                <li>Nothing to display</li>
-            {% endfor %}
-        </ul>
-        
-    {% else %}
-        <li>No questions to display</li>
-    {% endfor %}
+{% for question in questions %}
+    <li>{{ question.title }}</li>
 
+    <ul>
+        {% for answer in question.answers %}
+            <li>
+                <label>
+                    <input type="radio" class="radio" name="{{ question.id }}" value="{{ answer.id }}">
+                    <div class="answer-option">{{ answer.title }}</div>
+                </label>
+            </li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+    <li>No questions to display</li>
+{% endfor %}
     </ul>
     <div>
-        <button type="submit" class="btn btn-primary">J'envoie</button>
+        <button type="submit" class="btn btn-primary" name="submit">J'envoie</button>
     </div>
     </form>
     </div>
     
-    {{ app.request.parameter.get('question.id') }}
+    {{ app.request.parameter.get('answer.id') }}
     
     <a href="/">Accueil</a>
 {% endblock %}
