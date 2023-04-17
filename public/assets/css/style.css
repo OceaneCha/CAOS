@@ -2,9 +2,9 @@ body {
     color: #f76c6c;
 }
 
-.logo{
-    
-    display:flex;
+.logo {
+
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -14,3 +14,91 @@ body {
 
 
 }
+
+.message {
+    display: flex;
+    font-style: bold;
+    font-size: 2em;
+
+
+
+}
+
+.red {
+    color: rgb(232, 32, 32);
+    margin: 0.2em;
+
+}
+
+.yellow {
+    color: rgb(245, 230, 62);
+    margin: 0.2em;
+
+}
+
+.blue {
+    color: rgb(7, 7, 107);
+    margin: 0.2em;
+}
+
+.green {
+    color: rgb(179, 241, 169);
+    margin: 0.2em;
+}
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    list-style: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+label:hover {
+    background-color: #ddd;
+}
+
+.radio {
+    display: none;
+}
+
+.radio:checked+.answer-option {
+    background-color: grey;
+    color: #fff;
+}
+
+.correct, .correct_selected {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+
+
+.incorrect_selected {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+
+
