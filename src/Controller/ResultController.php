@@ -8,7 +8,6 @@ use App\Model\ThemeManager;
 
 class ResultController extends ThemeController
 {
-
     public function result()
     {
         $reponses = $_POST;
@@ -22,15 +21,13 @@ class ResultController extends ThemeController
         //à faire => rendre le tout dynamique
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($_SESSION['themeId']);
-        $questionManager = new QuestionManager();
-        $questions = $questionManager->showQuestions($_SESSION['themeId']);
+        $questions = $_SESSION['questions'];
 
         // Comparaison des réponses données avec les bonnes réponses
         foreach ($correctAnswers as $correctAnswer) {
             $questionId = $correctAnswer['question_id'];
             $answerId = $correctAnswer['answer_id'];
-            if (isset($reponses[$questionId]) && $reponses[$questionId] == $answerId) 
-            {
+            if (isset($reponses[$questionId]) && $reponses[$questionId] == $answerId) {
                 $score++;
             }
         }
