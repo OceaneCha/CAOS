@@ -24,7 +24,7 @@ class ThemeController extends AbstractController
      */
     public function show(int $id): string
     {
-
+        $_SESSION['themeId'] = $id;
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
         

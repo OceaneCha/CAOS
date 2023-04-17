@@ -21,9 +21,9 @@ class ResultController extends ThemeController
         // Récupération des questions, réponses et du thème
         //à faire => rendre le tout dynamique
         $themeManager = new ThemeManager();
-        $theme = $themeManager->selectOneById(1);
+        $theme = $themeManager->selectOneById($_SESSION['themeId']);
         $questionManager = new QuestionManager();
-        $questions = $questionManager->showQuestions(1);
+        $questions = $questionManager->showQuestions($_SESSION['themeId']);
 
         // Comparaison des réponses données avec les bonnes réponses
         foreach ($correctAnswers as $correctAnswer) {

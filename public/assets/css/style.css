@@ -52,13 +52,8 @@ body {
     flex-direction: column;
 }
 
-<<<<<<< HEAD
-.form{
-    display:flex;
-=======
 .form {
     display: flex;
->>>>>>> 6c3f95e72c995703ad29b43a1323ffcb4449851c
     flex-direction: column;
     align-items: center;
 }
@@ -87,12 +82,6 @@ label:hover {
     display: none;
 }
 
-<<<<<<< HEAD
-.radio:checked + .answer-option {
-    background-color: grey;
-    color: #fff;
-}
-=======
 .radio:checked+.answer-option {
     background-color: grey;
     color: #fff;
@@ -113,4 +102,3 @@ label:hover {
 
 
 
->>>>>>> 6c3f95e72c995703ad29b43a1323ffcb4449851c
