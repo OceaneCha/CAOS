@@ -1,12 +1,13 @@
  {% extends 'layout.html.twig' %}
 
 {% block content %}
+{# {{app.session.all()}} #}
 <div class='formContainer'>
     <h1>Quiz {{ theme.name }}</h1>
 
-     <form class='form' method="POST" action="" >
+     <form class='form' method="POST" action="/quiz/result" >
     <ul>
-   
+   <p>{{dump(questions)}}</p>
 {% for question in questions %}
     <li>{{ question.title }}</li>
 
@@ -28,7 +29,7 @@
 {% endfor %}
     </ul>
     <div>
-        <button type="submit" class="btn btn-primary">J'envoie</button>
+        <button type="submit" class="btn btn-primary" name="submit">J'envoie</button>
     </div>
     </form>
     </div>

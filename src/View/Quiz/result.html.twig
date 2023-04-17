@@ -3,33 +3,24 @@
 {% block content %}
 <div class='formContainer'>
     <h1>Résultats du quiz {{ theme.name }}</h1>
-    <p>Votre score est de : {{ results.score }} sur {{ questions|length }}</p>
+    {# on enleve 1 à length car POST recupere tous les valeurs dont le submit#}
+    <p>Votre score est de : {{ score }} sur {{ questions|length -1 }}</p>
 
-    <ul>
-        {% for question in questions %}
-            <li>{{ question.title }}</li>
+    <p>{{dump(questions)}}</p>
 
-            {% if results.answers[question.id] is defined %}
-                <ul>
-                    {% for answer in question.answers %}
-                        {% if answer.id == results.answers[question.id] %}
-                            {% if answer.isCorrect %}
-                                <li class="correct">{{ answer.title }}</li>
-                            {% else %}
-                                <li class="incorrect">{{ answer.title }}</li>
-                            {% endif %}
-                        {% else %}
-                            <li>{{ answer.title }}</li>
-                        {% endif %}
-                    {% else %}
-                        <li>Aucune réponse enregistrée</li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <li>Aucune réponse enregistrée</li>
+    {% for question in questions %}
+        {{ question}}
+        {#<h2>{{ question.title }}</h2>#}
+        {# 
+        <ul>
+        {% for answer in question.answers %}
+            {% if answer.isCorrect %}
+                <li class="correct">{{ answer.title }}</li>
             {% endif %}
         {% endfor %}
-    </ul>
+        </ul>
+        #}
+    {% endfor %}
 
     <a href="/">Accueil</a>
 </div>
