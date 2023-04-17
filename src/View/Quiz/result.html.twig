@@ -1,27 +1,33 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div class='formContainer'>
-    <h1>Résultats du quiz {{ theme.name }}</h1>
-    {# on enleve 1 à length car POST recupere tous les valeurs dont le submit#}
-    <p>Votre score est de : {{ score }} sur {{ questions|length -1 }}</p>
+    <div class='formContainer'>
+        <h1>Résultats du quiz {{ theme.name }}</h1>
+        <p>Votre score est de : {{ score }} sur {{ questions|length }}</p>
 
-    <p>{{dump(questions)}}</p>
+        {# test #2 récupère les questions et réponses 
+        + réponses utilisateur #}
 
-    {% for question in questions %}
-        {{ question}}
-        {#<h2>{{ question.title }}</h2>#}
-        {# 
-        <ul>
-        {% for answer in question.answers %}
-            {% if answer.isCorrect %}
-                <li class="correct">{{ answer.title }}</li>
-            {% endif %}
+        {% for question in questions %}
+            <h2>{{ question.title }}</h2>
+            <ul>
+                {% for answer in question.answers %}
+                    {% if answer.isCorrect %}
+                        {% if answer.id in reponses[question.id] %}
+                            <li class="correct">{{ answer.title }}</li>
+                        {% else %}
+                            <li class="correct_selected">{{ answer.title }}</li>
+                        {% endif %}
+                    {% elseif answer.id in reponses[question.id] %}
+                        <li class="incorrect_selected">{{ answer.title }}</li>
+                    {% else %}
+                        <li>{{ answer.title }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         {% endfor %}
-        </ul>
-        #}
-    {% endfor %}
 
-    <a href="/">Accueil</a>
-</div>
+        <a href="/">Accueil</a>
+    </div>
 {% endblock %}
+

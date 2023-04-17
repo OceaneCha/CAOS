@@ -2,9 +2,9 @@ body {
     color: #f76c6c;
 }
 
-.logo{
-    
-    display:flex;
+.logo {
+
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -14,44 +14,51 @@ body {
 
 
 }
-.message{
-    display:flex;
+
+.message {
+    display: flex;
     font-style: bold;
     font-size: 2em;
-    
-    
-    
-}
-.red{
-    color:rgb(232, 32, 32);
-    margin: 0.2em;
-   
+
+
+
 }
 
-.yellow{
-    color :rgb(245, 230, 62);
+.red {
+    color: rgb(232, 32, 32);
     margin: 0.2em;
-   
+
 }
 
-.blue{
-    color :rgb(7, 7, 107);
+.yellow {
+    color: rgb(245, 230, 62);
     margin: 0.2em;
+
 }
 
-.green{
-    color:rgb(179, 241, 169);
+.blue {
+    color: rgb(7, 7, 107);
     margin: 0.2em;
 }
 
-.formContainer{
-    display:flex;
+.green {
+    color: rgb(179, 241, 169);
+    margin: 0.2em;
+}
+
+.formContainer {
+    display: flex;
     align-items: center;
     flex-direction: column;
 }
 
+<<<<<<< HEAD
 .form{
     display:flex;
+=======
+.form {
+    display: flex;
+>>>>>>> 6c3f95e72c995703ad29b43a1323ffcb4449851c
     flex-direction: column;
     align-items: center;
 }
@@ -80,7 +87,30 @@ label:hover {
     display: none;
 }
 
+<<<<<<< HEAD
 .radio:checked + .answer-option {
     background-color: grey;
     color: #fff;
 }
+=======
+.radio:checked+.answer-option {
+    background-color: grey;
+    color: #fff;
+}
+
+.correct, .correct_selected {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+
+
+.incorrect_selected {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+>>>>>>> 6c3f95e72c995703ad29b43a1323ffcb4449851c
