@@ -1,5 +1,5 @@
 body {
-    color: #f76c6c;
+    color: white;
 }
 
 .logo {
@@ -11,17 +11,13 @@ body {
     font-size: 2em;
     color: rgb(111, 111, 238);
     font-style: bold;
-
-
+    background-image: url('../images/quizMan.webp');
 }
 
 .message {
     display: flex;
     font-style: bold;
     font-size: 2em;
-
-
-
 }
 
 .red {
@@ -36,8 +32,8 @@ body {
 
 }
 
-.blue {
-    color: rgb(7, 7, 107);
+.blue{
+    color :rgb(145, 145, 237);
     margin: 0.2em;
 }
 
@@ -50,12 +46,30 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-image: url('../images/musique.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 1.2em;
+    
+    
 }
 
 .form {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.themes {
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3em;
+    background-image: url('../images/quizMan.webp');
+}
+
+h1 {
+    color:rgb(132, 191, 219);
 }
 
 ul {
@@ -99,6 +113,3 @@ label:hover {
     color: white;
     font-weight: bold;
 }
-
-
-

@@ -17,7 +17,7 @@ class AnswerManager extends AbstractManager
         $answers = $statement->fetchAll(PDO::FETCH_OBJ);
         return $answers;
     }
-
+    
     /**************************/
     /* Add a new answer       */
     /**************************/
