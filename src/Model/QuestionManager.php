@@ -33,12 +33,13 @@ class QuestionManager extends AbstractManager
     public function add(array $form): void
     {
         // New question add query
-        $query = "INSERT INTO " . self::TABLE . " (title, theme_id) VALUES (:title, :theme_id)";
+        $query = "INSERT INTO " . self::TABLE . " (title, theme_id, clue) VALUES (:title, :theme_id, :clue)";
         $stmt = $this->pdo->prepare($query);
 
         // Bind values
         $stmt->bindValue(':title', $form['title']);
         $stmt->bindValue(':theme_id', $form['theme_id'], \PDO::PARAM_INT);
+        $stmt->bindValue(':clue', $form['clue']);
 
         // Initialize questionID to link with the answers
         $questionID = 0;

@@ -31,6 +31,7 @@ class QuestionController extends AbstractController
             $question['answers'][3] = $_POST['answer3'];
             $question['answers'][4] = $_POST['answer4'];
             $question['correctAnswer'] = $_POST['correct'];
+            $question['clue'] = $_POST['clue'];
             // call manager->add
             $questionManager = new QuestionManager();
             $questionManager->add($question);
