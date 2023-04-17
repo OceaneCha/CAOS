@@ -15,4 +15,7 @@ return ['items' => ['ItemController', 'index',],
     'themes' => ['ThemeController', 'show', ['id']],
     'quiz' => ['QuizController', 'index',],
     'quiz/result' => ['ResultController', 'result',],
+    'add' => ['HomeController', 'add',],
+    'add/theme' => ['ThemeController', 'add',],
+    'add/question' => ['QuestionController', 'add',],
 ];

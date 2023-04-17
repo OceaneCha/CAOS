@@ -26,7 +26,7 @@ class ThemeController extends AbstractController
         return $this->twig->render('Theme/index.html.twig', ['themes' => $themes]);
     }
 
-       /**
+    /**
      * Show informations for a specific item
      */
     public function show(int $id): string
@@ -49,5 +49,13 @@ class ThemeController extends AbstractController
         ];
 
         return $this->twig->render('Quiz/index.html.twig', $twigArgs);
+    }
+
+    public function add(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // call manager->add
+        }
+        return $this->twig->render('Theme/add.html.twig');
     }
 }
