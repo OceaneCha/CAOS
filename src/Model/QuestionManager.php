@@ -12,7 +12,7 @@ class QuestionManager extends AbstractManager
     public function showQuestions(int $id)
     {
         $query = "SELECT * FROM " . self::TABLE . " WHERE theme_id = :id
-        ORDER BY RAND()";//pour shuffle les questions et les réponses
+        ORDER BY RAND() LIMIT 10";//pour shuffle les questions et les réponses
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
