@@ -1,5 +1,7 @@
 body {
     color: white;
+    min-height: 100vh;
+    background-image: url('../images/quizMan.webp');
 }
 
 .logo {
@@ -11,7 +13,6 @@ body {
     font-size: 2em;
     color: rgb(111, 111, 238);
     font-style: bold;
-    background-image: url('../images/quizMan.webp');
 }
 
 .message {
