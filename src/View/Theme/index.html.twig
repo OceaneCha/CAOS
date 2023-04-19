@@ -6,7 +6,7 @@
     <h1>Themes</h1>
     <ul>
         {% for theme in themes %}
-            <li><a href="/themes?id={{ theme.id }}">{{ theme.name }}</a></li>
+            <li><a href="/themes?id={{ theme.id }}&b50=0&idq50=0">{{ theme.name }}</a></li>
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}

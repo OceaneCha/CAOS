@@ -8,8 +8,8 @@ use PDO;
 class QuestionManager extends AbstractManager
 {
     public const TABLE = 'question';
-
-    public function showQuestions(int $id)
+    //showQuestions recupere id du theme
+    public function showQuestions(int $id, bool $b50, int $idq50)
     {
         $query = "SELECT * FROM " . self::TABLE . " WHERE theme_id = :id
         ORDER BY RAND()";//pour shuffle les questions et les réponses
@@ -20,12 +20,11 @@ class QuestionManager extends AbstractManager
 
         $answerManager = new AnswerManager();
         foreach ($questions as $question) {
-            $question->answers = $answerManager->getAnswers($question->id);
+            $question->answers = $answerManager->getAnswers($question->id, $b50, $idq50);
         }
-
+        //var_dump($questions);
         return $questions;
     }
-
     /**************************/
     /* Add a new question     */
     /* + its answers          */

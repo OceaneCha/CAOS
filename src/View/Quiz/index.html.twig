@@ -1,7 +1,7 @@
  {% extends 'layout.html.twig' %}
 
 {% block content %}
-{# {{app.session.all()}} #}
+
 <div class='formContainer'>
     <h1>Quiz {{ theme.name }}</h1>
 
@@ -10,8 +10,14 @@
    
 {% for question in questions %}
     <li>{{ question.title }}</li>
-
-    <ul>
+   
+    
+    
+        <button  >
+            <a href="/themes?id={{ theme.id }}&b50=1&idq50={{question.id}}" class="btn btn-primary">{{ theme.name }}jocker 50/50</a>
+        </button>
+    
+        <ul>
         {% for answer in question.answers %}
             <li>
                 <label>
@@ -19,10 +25,14 @@
                     <div class="answer-option">{{ answer.title }}</div>
                 </label>
             </li>
+            
         {% else %}
             <li>Nothing to display</li>
         {% endfor %}
-    </ul>
+        </ul>
+  
+   
+    
 
 {% else %}
     <li>No questions to display</li>
@@ -34,7 +44,7 @@
     </form>
     </div>
     
-    {{ app.request.parameter.get('answer.id') }}
+    
     
     <a href="/">Accueil</a>
 {% endblock %}

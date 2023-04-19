@@ -25,27 +25,34 @@ class ThemeController extends AbstractController
 
         return $this->twig->render('Theme/index.html.twig', ['themes' => $themes]);
     }
-
     /**
      * Show informations for a specific item
      */
-    public function show(int $id): string
+    public function show(int $id, bool $b50, int $idq50): string
     {
-        $_SESSION['themeId'] = $id;
+        //echo $id;
+        // $_SESSION['themeId'] = $id;
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
 
         $questionManager = new QuestionManager();
-        $questions = $questionManager->showQuestions($id);
-        $_SESSION['questions'] = $questions;
+        $questions = $questionManager->showQuestions($id, $b50, $idq50);
+       // $_SESSION['questions'] = $questions;
+        //var_dump($_SESSION['questions']);
+       // die();
+      
 
         $answerManager = new AnswerManager();
-        $answers = $answerManager->getAnswers($id);
+        $answers = $answerManager->getAnswers($id, $b50, $idq50);
+       // $_SESSION['answers'] = $answers;
+        //var_dump($_SESSION['answers']);
+        //die();
 
         $twigArgs = [
             'theme' => $theme,
             'questions' => $questions,
-             'answers' => $answers
+            'answers' => $answers,
+
         ];
 
         return $this->twig->render('Quiz/index.html.twig', $twigArgs);
