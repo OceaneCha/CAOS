@@ -13,4 +13,5 @@ return ['' => ['ThemeController', 'index',],
     'add' => ['HomeController', 'add',],
     'add/theme' => ['ThemeController', 'add',],
     'add/question' => ['QuestionController', 'add',],
+    'edit/question' => ['QuestionController', 'edit',],
 ];

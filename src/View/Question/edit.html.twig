@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<form method="post">
+    {# <label for="theme_id">Theme</label>
+    <select name="theme_id">
+        {% for theme in themes %}
+            <option value="{{ theme.id }}">{{ theme.name }}</option>
+        {% endfor %}
+    </select>
+    <br> #}
+    <label for="question_id">Question</label>
+    <select name="question_id">
+        {% for question in questions %}
+            <option value="{{ question.id }}">{{ question.title }}</option>
+        {% endfor %}
+        </select>
+    <br>
+    <label for="title">Title</label>
+    <textarea name="title" rows="5" cols="60">{{ question.title }}</textarea>
+    <br>
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -40,4 +40,19 @@ class QuestionController extends AbstractController
         $themes = $theme->selectAll();
         return $this->twig->render('Question/add.html.twig', ['themes' => $themes]);
     }
+
+    public function edit(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $questionId = $_POST['question_id'];
+            $title = $_POST['title'];
+            $questionManager = new QuestionManager();
+            $questionManager->edit($questionId, $title);
+        }
+
+        $questionManager = new QuestionManager();
+        $questions = $questionManager->selectAll();
+
+        return $this->twig->render('Question/edit.html.twig', ['questions' => $questions]);
+    }
 }

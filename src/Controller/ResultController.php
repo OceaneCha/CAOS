@@ -18,7 +18,6 @@ class ResultController extends ThemeController
         $correctAnswers = $resultManager->getCorrectAnswers();
 
         // Récupération des questions, réponses et du thème
-        //à faire => rendre le tout dynamique
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($_SESSION['themeId']);
         $questions = $_SESSION['questions'];

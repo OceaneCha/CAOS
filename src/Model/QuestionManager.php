@@ -12,7 +12,7 @@ class QuestionManager extends AbstractManager
     public function showQuestions(int $id)
     {
         $query = "SELECT * FROM " . self::TABLE . " WHERE theme_id = :id
-        ORDER BY RAND()";//pour shuffle les questions et les réponses
+        ORDER BY RAND() LIMIT 10";//pour shuffle les questions et les réponses limit 10
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
@@ -62,5 +62,14 @@ class QuestionManager extends AbstractManager
             $answerManager = new AnswerManager();
             $answerManager->add($answer, $questionID, $isCorrect);
         }
+    }
+
+    public function edit(int $questionId, string $title): void
+    {
+        $query = "UPDATE " . self::TABLE . " SET title=:title WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':title', $title);
+        $statement->bindValue(':id', $questionId);
+        $statement->execute();
     }
 }
