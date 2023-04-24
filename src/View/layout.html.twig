@@ -32,7 +32,13 @@
     <header>{% include 'header.html.twig' %}</header>
 
     {% block content %}{% endblock %}
-    {% block javascript %}{% endblock %}
+    {% block javascript %}
+    <!-- MDB -->
+    <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+    ></script>
+    {% endblock %}
 
     <footer>{% include 'footer.html.twig' %}</footer>
 </body>

@@ -81,7 +81,7 @@ li {
     list-style: none;
 }
 
-label {
+/* label {
     display: block;
     margin-bottom: 10px;
     background-color: #ccc;
@@ -89,8 +89,20 @@ label {
     border-radius: 5px;
 }
 
-label:hover {
+li.answer:hover, label:hover {
     background-color: #ddd;
+} */
+label.btn-secondary {
+    background-color: white;
+}
+label:hover, input.btn-check:hover {
+    background-color: rgb(72, 100, 179) !important;
+    color: white !important;
+}
+
+.btn-check:checked+.btn-secondary {
+    background-color: rgb(72, 100, 179) !important;
+    color: white !important;
 }
 
 .radio {

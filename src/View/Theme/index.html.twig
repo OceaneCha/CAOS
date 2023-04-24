@@ -7,7 +7,7 @@
         <div class="row mx-auto">
             {% for theme in themes %}
                 <div class="col-6 text-center">
-                    <a class="btn btn-primary btn-lg col-8 mt-2" style="background-color: {{theme.color}};" href="/themes?id={{ theme.id }}">
+                    <a class="btn btn-primary btn-lg text-lg col-8 mt-2" style="background-color: {{theme.color}};" href="/themes?id={{ theme.id }}">
                         <i class="fas fa-{{theme.icon}} me-2"></i>
                         {{ theme.name }}
                     </a>
