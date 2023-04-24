@@ -95,9 +95,18 @@ li.answer:hover, label:hover {
 label.btn-secondary {
     background-color: white;
 }
-label:hover, input.btn-check:hover {
+.quiz label:hover, .quiz input.btn-check:hover {
     background-color: rgb(72, 100, 179) !important;
     color: white !important;
+}
+
+.results label:hover {
+    background-color: white;
+    color: white;
+}
+
+.results label.false-answer:hover {
+    color: black;
 }
 
 .btn-check:checked+.btn-secondary {
@@ -115,14 +124,18 @@ label:hover, input.btn-check:hover {
 }
 
 .correct, .correct_selected {
-    background-color: green;
+    background-color: green !important;
     color: white;
     font-weight: bold;
 }
 
+.correct_selected {
+    background-color: #f0f  !important;
+}
+
 
 .incorrect_selected {
-    background-color: red;
+    background-color: red !important;
     color: white;
     font-weight: bold;
 }
