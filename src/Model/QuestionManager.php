@@ -11,12 +11,23 @@ class QuestionManager extends AbstractManager
     //showQuestions recupere id du theme
     public function showQuestions(int $id, bool $b50, int $idq50)
     {
-        $query = "SELECT * FROM " . self::TABLE . " WHERE theme_id = :id" ;
-        //ORDER BY RAND()";//pour shuffle les questions et les réponses
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        $questions = $statement->fetchAll(PDO::FETCH_OBJ);
+        // En mode zéro joker, on récupère l'ensemble des réponses et on trie au hasard
+        if (!$b50) {
+            $query = "SELECT * FROM " . self::TABLE . " WHERE theme_id = :id";
+            //ORDER BY RAND()";//pour shuffle les questions et les réponses
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $questions = $statement->fetchAll(PDO::FETCH_OBJ);
+            shuffle($questions);
+        } else {
+            // En mode joker, on récupère les réponses dans la vartiable de session et on récupère les réponses filtrées avec joker
+            $questions = $_SESSION['questions'];
+        }
+        
+        
+        
+        
 
         $answerManager = new AnswerManager();
         foreach ($questions as $question) {

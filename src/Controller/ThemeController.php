@@ -35,14 +35,15 @@ class ThemeController extends AbstractController
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
 
+        // Si la variable de session des questions / réponses n'est pas initialisée :
         if (!isset($_SESSION['questions'])) {
             // on affiche question reponses et bouton jocker 5050 avec random
             $questionManager = new QuestionManager();
             $questions = $questionManager->showQuestions($id, $b50, $idq50);
-            $_SESSION['questions'] = shuffle($questions);
-        } else {
-            // on affiche question reponses et bouton jocker 5050 et pas de random
-            $questions = $_SESSION['questions'];
+            $_SESSION['questions'] = $questions; 
+        } 
+        else {
+            // on affiche question reponses et pas de bouton jocker 5050 et pas de random
             $questionManager = new QuestionManager();
             $questions = $questionManager->showQuestions($id, $b50, $idq50);
         }
