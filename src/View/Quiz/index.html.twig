@@ -10,29 +10,32 @@
    
 {% for question in questions %}
     <li>{{ question.title }}</li>
-   
-    
-    
+     {% block javascript %}
+            <script type="text/javascript">
+                function cacherBouton(){
+                document.getElementById("boutonACacher").style.display = "none";
+                }
+            </script>
+    {% endblock %}
+    {% if b50 != 1 %}
         <button  >
-            <a href="/themes?id={{ theme.id }}&b50=1&idq50={{question.id}}" class="btn btn-primary">{{ theme.name }}jocker 50/50</a>
+            <a href="/themes?id={{ theme.id }}&b50=1&idq50={{question.id}}" class="boutonACacher" onclick ="cacherBouton()" >{{ theme.name }}jocker 50/50</a>
         </button>
+    {% endif %}
     
         <ul>
-        {% for answer in question.answers %}
-            <li>
-                <label>
-                    <input type="radio" class="radio" name="{{ question.id }}" value="{{ answer.id }}">
-                    <div class="answer-option">{{ answer.title }}</div>
-                </label>
+            {% for answer in question.answers %}
+             <li>
+                    <label>
+                      <input type="radio" class="radio" name="{{ question.id }}" value="{{ answer.id }}">
+                     <div class="answer-option">{{ answer.title }}</div>
+                     </label>
             </li>
-            
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
+            {% else %}
+                 <li>Nothing to display</li>
+             {% endfor %}
         </ul>
-  
-   
-    
+
 
 {% else %}
     <li>No questions to display</li>

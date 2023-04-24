@@ -31,19 +31,28 @@ class ThemeController extends AbstractController
     public function show(int $id, bool $b50, int $idq50): string
     {
         //echo $id;
-        // $_SESSION['themeId'] = $id;
+        $_SESSION['themeId'] = $id;
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
 
-        $questionManager = new QuestionManager();
-        $questions = $questionManager->showQuestions($id, $b50, $idq50);
-       // $_SESSION['questions'] = $questions;
+        if (!isset($_SESSION['questions'])) {
+            // on affiche question reponses et bouton jocker 5050 avec random
+            $questionManager = new QuestionManager();
+            $questions = $questionManager->showQuestions($id, $b50, $idq50);
+            $_SESSION['questions'] = shuffle($questions);
+        } else {
+            // on affiche question reponses et bouton jocker 5050 et pas de random
+            $questions = $_SESSION['questions'];
+            $questionManager = new QuestionManager();
+            $questions = $questionManager->showQuestions($id, $b50, $idq50);
+        }
         //var_dump($_SESSION['questions']);
-       // die();
+        //die;
       
 
         $answerManager = new AnswerManager();
         $answers = $answerManager->getAnswers($id, $b50, $idq50);
+        
        // $_SESSION['answers'] = $answers;
         //var_dump($_SESSION['answers']);
         //die();
@@ -52,6 +61,7 @@ class ThemeController extends AbstractController
             'theme' => $theme,
             'questions' => $questions,
             'answers' => $answers,
+            'b50' => $b50,
 
         ];
 
