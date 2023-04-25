@@ -8,13 +8,31 @@ class AnswerManager extends AbstractManager
 {
     public const TABLE = 'answer';
 
-    public function getAnswers(int $qid)
+    public function getAnswers(int $qid, bool $b50, int $idq50)
     {
-        $queryAnswer = "SELECT * FROM " . self::TABLE . " WHERE question_id = :qid ORDER BY RAND()";
-        $statement = $this->pdo->prepare($queryAnswer);
-        $statement->bindValue(':qid', $qid, PDO::PARAM_INT);
-        $statement->execute();
-        $answers = $statement->fetchAll(PDO::FETCH_OBJ);
+        if ($b50 === true && $idq50 === $qid) {
+        ///////////////////
+
+            $queryAnswer = "SELECT * FROM " . self::TABLE .
+                            " WHERE question_id = :qid AND isCorrect = 1 
+                            UNION
+                            SELECT * FROM " . self::TABLE .
+                            " WHERE question_id = :qid AND isCorrect = 0 LIMIT 2";
+            $statement = $this->pdo->prepare($queryAnswer);
+            $statement->bindValue(':qid', $qid, PDO::PARAM_INT);
+            $statement->execute();
+            $answers = $statement->fetchAll(PDO::FETCH_OBJ);
+
+
+        ///////////////////
+        } else {
+            $queryAnswer = "SELECT * FROM " . self::TABLE . " WHERE question_id = :qid ORDER BY RAND()";
+            $statement = $this->pdo->prepare($queryAnswer);
+            $statement->bindValue(':qid', $qid, PDO::PARAM_INT);
+            $statement->execute();
+            $answers = $statement->fetchAll(PDO::FETCH_OBJ);
+            //var_dump($answers);
+        }
         return $answers;
     }
     

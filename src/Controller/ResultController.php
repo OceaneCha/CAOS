@@ -11,6 +11,8 @@ class ResultController extends ThemeController
     public function result()
     {
         $reponses = $_POST;
+        //var_dump($reponses);
+        //die();
         $score = 0;
 
         // Récupération des réponses correctes
