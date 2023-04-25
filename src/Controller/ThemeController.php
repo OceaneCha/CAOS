@@ -40,20 +40,19 @@ class ThemeController extends AbstractController
             // on affiche question reponses et bouton jocker 5050 avec random
             $questionManager = new QuestionManager();
             $questions = $questionManager->showQuestions($id, $b50, $idq50);
-            $_SESSION['questions'] = $questions; 
-        } 
-        else {
+            $_SESSION['questions'] = $questions;
+        } else {
             // on affiche question reponses et pas de bouton jocker 5050 et pas de random
             $questionManager = new QuestionManager();
             $questions = $questionManager->showQuestions($id, $b50, $idq50);
         }
         //var_dump($_SESSION['questions']);
         //die;
-      
+
 
         $answerManager = new AnswerManager();
         $answers = $answerManager->getAnswers($id, $b50, $idq50);
-        
+
        // $_SESSION['answers'] = $answers;
         //var_dump($_SESSION['answers']);
         //die();
