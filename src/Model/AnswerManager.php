@@ -8,7 +8,7 @@ class AnswerManager extends AbstractManager
 {
     public const TABLE = 'answer';
 
-    public function getAnswers(int $qid, bool $b50, int $idq50)
+    public function getAnswers(int $qid, bool $b50, int $idq50): array
     {
         if ($b50 === true && $idq50 === $qid) {
         ///////////////////
@@ -21,19 +21,20 @@ class AnswerManager extends AbstractManager
             $statement = $this->pdo->prepare($queryAnswer);
             $statement->bindValue(':qid', $qid, PDO::PARAM_INT);
             $statement->execute();
-            $answers = $statement->fetchAll(PDO::FETCH_OBJ);
 
-
+            return $statement->fetchAll(PDO::FETCH_OBJ);
         ///////////////////
-        } else {
-            $queryAnswer = "SELECT * FROM " . self::TABLE . " WHERE question_id = :qid ORDER BY RAND()";
-            $statement = $this->pdo->prepare($queryAnswer);
-            $statement->bindValue(':qid', $qid, PDO::PARAM_INT);
-            $statement->execute();
-            $answers = $statement->fetchAll(PDO::FETCH_OBJ);
-            //var_dump($answers);
+        } elseif (!empty($_SESSION['question-' . $qid . '-answers'])) {
+            return $_SESSION['question-' . $qid . '-answers'];
         }
-        return $answers;
+
+        $queryAnswer = "SELECT * FROM " . self::TABLE . " WHERE question_id = :qid ORDER BY RAND()";
+        $statement = $this->pdo->prepare($queryAnswer);
+        $statement->bindValue(':qid', $qid, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+            //var_dump($answers);
     }
 
     /**************************/

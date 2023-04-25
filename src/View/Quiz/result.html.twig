@@ -15,12 +15,12 @@
             <div class="btn-group results">
                 {% for answer in question.answers %}
                     {% if answer.isCorrect %}
-                        {% if answer.id in reponses[question.id] %}
+                        {% if answer.id and answer.aChoosen %}
                             <label class="btn btn-outline-secondary btn-secondary correct">{{ answer.title }}</label>
                         {% else %}
                             <label class="btn btn-outline-secondary btn-secondary correct">{{ answer.title }}</label>
                         {% endif %}
-                    {% elseif answer.id in reponses[question.id] %}
+                    {% elseif answer.id and answer.aChoosen %}
                         <label class="btn btn-outline-secondary btn-secondary incorrect_selected">{{ answer.title }}</label>
                     {% else %}
                         <label class="btn btn-outline-secondary btn-secondary false-answer">{{ answer.title }}</label>
