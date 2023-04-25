@@ -20,7 +20,7 @@ class QuestionManager extends AbstractManager
             $questions = $statement->fetchAll(PDO::FETCH_OBJ);
             shuffle($questions);
         } else {
-            // En mode joker, on récupère les réponses dans la vartiable de session
+            // En mode joker, on récupère les réponses dans la variable de session
             //et on récupère les réponses filtrées avec joker
             $questions = $_SESSION['questions'];
         }
