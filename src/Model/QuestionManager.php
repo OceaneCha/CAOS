@@ -8,24 +8,31 @@ use PDO;
 class QuestionManager extends AbstractManager
 {
     public const TABLE = 'question';
-
-    public function showQuestions(int $id)
+    //showQuestions recupere id du theme
+    public function showQuestions(int $id, bool $b50, int $idq50)
     {
-        $query = "SELECT * FROM " . self::TABLE . " WHERE theme_id = :id
-        ORDER BY RAND() LIMIT 10";//pour shuffle les questions et les réponses
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        $questions = $statement->fetchAll(PDO::FETCH_OBJ);
+        // En mode zéro joker, on récupère l'ensemble des réponses et on trie au hasard
+        if (!$b50) {
+            $query = "SELECT * FROM " . self::TABLE . " WHERE theme_id = :id";
+            //ORDER BY RAND()";//pour shuffle les questions et les réponses
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            $questions = $statement->fetchAll(PDO::FETCH_OBJ);
+            shuffle($questions);
+        } else {
+            // En mode joker, on récupère les réponses dans la vartiable de session
+            //et on récupère les réponses filtrées avec joker
+            $questions = $_SESSION['questions'];
+        }
 
         $answerManager = new AnswerManager();
         foreach ($questions as $question) {
-            $question->answers = $answerManager->getAnswers($question->id);
+            $question->answers = $answerManager->getAnswers($question->id, $b50, $idq50);
         }
-
+        //var_dump($questions);
         return $questions;
     }
-
     /**************************/
     /* Add a new question     */
     /* + its answers          */
