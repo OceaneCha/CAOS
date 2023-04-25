@@ -10,8 +10,9 @@
 {% for question in questions %}
     <li class="mt-3">{{ question.title }}</li>
     {% if b50 != 1 %}
-        <button  >
-            <a href="/themes?id={{ theme.id }}&b50=1&idq50={{question.id}}">{{ theme.name }}jocker 50/50</a>
+        <button class="btn btn-secondary">
+            <a href="/themes?id={{ theme.id }}&b50=1&idq50={{question.id}}">
+            <i class="fas fa-wand-sparkles"></i> 50/50</a>
         </button>
     {% endif %}
 

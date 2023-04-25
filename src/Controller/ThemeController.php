@@ -28,7 +28,7 @@ class ThemeController extends AbstractController
     /**
      * Show informations for a specific item
      */
-    public function show(int $id, bool $b50, int $idq50): string
+    public function show(int $id, bool $b50 = false, int $idq50 = 0): string
     {
         //echo $id;
         $_SESSION['themeId'] = $id;
