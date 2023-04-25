@@ -35,7 +35,7 @@ class AnswerManager extends AbstractManager
         }
         return $answers;
     }
-
+    
     /**************************/
     /* Add a new answer       */
     /**************************/
