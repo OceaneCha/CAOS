@@ -139,3 +139,8 @@ label.btn-secondary {
     color: white;
     font-weight: bold;
 }
+
+.wcs {
+    width: 10rem;
+    padding: 1rem;
+}
