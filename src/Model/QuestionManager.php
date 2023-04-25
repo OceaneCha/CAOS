@@ -24,10 +24,6 @@ class QuestionManager extends AbstractManager
             // En mode joker, on récupère les réponses dans la vartiable de session et on récupère les réponses filtrées avec joker
             $questions = $_SESSION['questions'];
         }
-        
-        
-        
-        
 
         $answerManager = new AnswerManager();
         foreach ($questions as $question) {
