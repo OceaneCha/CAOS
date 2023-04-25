@@ -1,14 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-   
-
-    <h1>Themes</h1>
-    <ul>
-        {% for theme in themes %}
-            <li><a href="/themes?id={{ theme.id }}&b50=0&idq50=0">{{ theme.name }}</a></li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    </ul>
+    <div class="container justify-content-start flex-grow-1 mt-4 text-center">
+        <h1>Choisissez votre thème</h1>
+        <div class="row mx-auto">
+            {% for theme in themes %}
+                <div class="col-6 text-center">
+                    <a class="btn btn-primary btn-lg text-lg col-8 mt-2" style="background-color: {{theme.color}};" href="/themes?id={{ theme.id }}">
+                        <i class="fas fa-{{theme.icon}} me-2"></i>
+                        {{ theme.name }}
+                    </a>
+                </div>
+            {% else %}
+                <div class="col-12">Nothing to display</div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

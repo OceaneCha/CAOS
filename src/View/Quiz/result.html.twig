@@ -8,26 +8,29 @@
         {# test #2 récupère les questions et réponses 
         + réponses utilisateur #}
 
+        <ul>
         {% for question in questions %}
-            <h2>{{ question.title }}</h2>
-            <ul>
+            <li class="mt-3">{{ question.title }}</li>
+            
+            <div class="btn-group results">
                 {% for answer in question.answers %}
                     {% if answer.isCorrect %}
                         {% if answer.id in reponses[question.id] %}
-                            <li class="correct">{{ answer.title }}</li>
+                            <label class="btn btn-outline-secondary btn-secondary correct_selected">{{ answer.title }}</label>
                         {% else %}
-                            <li class="correct_selected">{{ answer.title }}</li>
+                            <label class="btn btn-outline-secondary btn-secondary correct">{{ answer.title }}</label>
                         {% endif %}
                     {% elseif answer.id in reponses[question.id] %}
-                        <li class="incorrect_selected">{{ answer.title }}</li>
+                        <label class="btn btn-outline-secondary btn-secondary incorrect_selected">{{ answer.title }}</label>
                     {% else %}
-                        <li>{{ answer.title }}</li>
+                        <label class="btn btn-outline-secondary btn-secondary false-answer">{{ answer.title }}</label>
                     {% endif %}
                 {% endfor %}
-            </ul>
+            </div>
         {% endfor %}
+        </ul>
 
-        <a href="/">Accueil</a>
+        <a class="btn btn-primary btn-lg" href="/">Accueil</a>
     </div>
 {% endblock %}
 

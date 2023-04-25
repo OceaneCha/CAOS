@@ -28,7 +28,9 @@ class QuestionManager extends AbstractManager
         $answerManager = new AnswerManager();
         foreach ($questions as $question) {
             $question->answers = $answerManager->getAnswers($question->id, $b50, $idq50);
+            $question->answers = $answerManager->getAnswers($question->id, $b50, $idq50);
         }
+        //var_dump($questions);
         //var_dump($questions);
         return $questions;
     }
