@@ -35,25 +35,29 @@ class ThemeController extends AbstractController
     public function show(int $id, bool $b50 = false, int $idq = 0, int $aid = null): string
     {
         //echo $id;
-        
+
         $_SESSION['themeId'] = $id;
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
-var_dump($b50);
+
 
         if ($b50 == true) {
             $_SESSION['useJocker50'] = true;
         }
+
+        if (!isset($_SESSION['page'])) {
+            $_SESSION['page'] = 0 ;
+        }
         $questionManager = new QuestionManager();
         $questionManager->setQuestions($id, $b50, $idq, $aid);
-        
-        
+
         $twigArgs = [
             'theme' => $theme,
-            // 'questions' => $questions,
             'b50' => $b50,
+            'page' => $_SESSION['page'],
 
         ];
+
         $this->twig->addGlobal('session', $_SESSION);
         return $this->twig->render('Quiz/index.html.twig', $twigArgs);
     }

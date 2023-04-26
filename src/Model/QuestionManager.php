@@ -27,17 +27,18 @@ class QuestionManager extends AbstractManager
         $answerManager = new AnswerManager();
         foreach ($_SESSION['questions'] as $key => $question) {
             $_SESSION['question-' . $question->id . '-answers'] = $answerManager->getAnswers($question->id, $b50, $idq50);
-            
+
             foreach ($_SESSION['question-' . $question->id . '-answers'] as $answer) {
                 if ($answer->id == $choosenAnswerId) {
                     $answer->aChoosen = true;
-                    $_SESSION['question-' . $question->id] = $choosenAnswerId;
+                    if (!isset($_SESSION['question-' . $question->id])) {
+                        $_SESSION['question-' . $question->id] = $choosenAnswerId;
+                        $_SESSION['page']++;
+                    }
                 }
             }
-            //var_dump($answers, $_SESSION, $aid);
-           // if ($aid)die;
+
             $_SESSION['questions'][$key]->answers = $_SESSION['question-' . $question->id . '-answers'];
-            
         }
     }
     /**************************/

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\QuestionManager;
 use App\Model\ResultManager;
 use App\Model\ThemeManager;
+use Exception;
 
 class ResultController extends ThemeController
 {
@@ -29,6 +30,9 @@ class ResultController extends ThemeController
             $answerId = $correctAnswer['answer_id'];
             if (isset($_SESSION['question-' . $questionId]) && $_SESSION['question-' . $questionId] == $answerId) {
                 $score++;
+            } else {
+                //throw new Exception('non non non , faut répondre');
+                //header("Location : Quiz/index.html.twig");
             }
         }
         $this->twig->addGlobal('session', $_SESSION);
