@@ -144,3 +144,7 @@ label.btn-secondary {
     width: 10rem;
     padding: 1rem;
 }
+
+.dropdown-menu li.bg-danger a:hover {
+    background-color: red;
+}
