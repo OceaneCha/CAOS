@@ -95,7 +95,7 @@ li.answer:hover, label:hover {
 label.btn-secondary {
     background-color: white;
 }
-.quiz label:hover, .quiz input.btn-check:hover {
+.quiz label:hover, .quiz a.btn-secondary:hover {
     background-color: rgb(72, 100, 179) !important;
     color: white !important;
 }
@@ -109,7 +109,7 @@ label.btn-secondary {
     color: black;
 }
 
-.btn-check:checked+.btn-secondary {
+.btn btn-outline:checked+.btn-secondary {
     background-color: rgb(72, 100, 179) !important;
     color: white !important;
 }

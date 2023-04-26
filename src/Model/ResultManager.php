@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Exception;
 use PDO;
 
 class ResultManager extends AbstractManager
