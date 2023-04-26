@@ -12,11 +12,12 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
             // TODO: validations, send $errors to view
-            if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Email address invalid.";
-            }
             $userManager = new UserManager();
-            $user = $userManager->selectOneByEmail($_POST['email']);
+            if (filter_var($credentials['login'], FILTER_VALIDATE_EMAIL)) {
+                $user = $userManager->selectOneByEmail($credentials['login']);
+            } else {
+                $user = $userManager->selectOneByUsername($credentials['login']);
+            }
 
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];

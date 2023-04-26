@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid d-flex align-items-center">
+        <div class="card w-75 bg-dark mx-auto mt-3 mb-3">
+            <div class="col-md-6 offset-md-3">
+                <h1>Register an account</h1>
+                <p>Please fill the form below to create an account.</p>
+                <form action="" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label text-white">Username</label>
+                        <input class="form-control" type="text" id="username" name="username" required>
+                    </div>  
+                    <div class="mb-3">
+                        <label for="email" class="form-label text-white">Email</label>
+                        <input class="form-control" type="email" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label text-white">Password</label>
+                        <input class="form-control" type="password" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">Create account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -16,17 +16,18 @@
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
                         <div class="accordion-body bg-dark text-white">
                             <div class="col-md-6 offset-md-3">
-                                <p>Enter credentials below to be connected.</p>
+                                <p>Enter credentials below to be connected,<br>or follow the Register link to create an account.</p>
                                 <form action="login" method="post">
                                     <div class="mb-3">
-                                        <label for="email" class="form-label text-white">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" >
+                                        <label for="login" class="form-label text-white">Email or Username</label>
+                                        <input type="text" class="form-control" id="login" name="login" >
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label text-white">Password</label>
                                         <input type="password" class="form-control" id="password" name="password" >
                                     </div>
                                     <button type="submit" class="btn btn-success">Log me in</button>
+                                    <a href="register" class="btn btn-secondary">Register</a>
                                 </form>
                             </div>
                         </div>

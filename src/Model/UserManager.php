@@ -16,6 +16,16 @@ class UserManager extends AbstractManager
         return $stmt->fetch();
     }
 
+    public function selectOneByUsername(string $username)
+    {
+        $query = "SELECT * FROM user where username=:username";
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->bindValue(':username', $username);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function insert(array $credentials): int
     {
         $query = "INSERT INTO " . static::TABLE .

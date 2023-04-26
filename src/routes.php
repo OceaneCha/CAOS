@@ -15,4 +15,5 @@ return ['' => ['ThemeController', 'index',],
     'add/question' => ['QuestionController', 'add',],
     'login' => ['UserController', 'login',],
     'logout' => ['UserController', 'logout',],
+    'register' => ['UserController', 'register',],
 ];
