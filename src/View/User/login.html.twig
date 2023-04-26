@@ -1,7 +1,7 @@
-            <h3 class="mt-3">Connectez-vous pour sauvegarder vos résultats</h2>
-            <div class="accordion accordion-borderless w-75 mx-auto mt-2" id="accordionExample">
+            {# <h5 class="mt-3 ">Connectez-vous pour sauvegarder vos résultats</h5> #}
+            <div class="accordion accordion-borderless w-25 mx-auto mt-5" id="accordionExample">
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
+                    <h4 class="accordion-header" id="headingOne">
                     <button
                         class="accordion-button bg-dark border-0"
                         type="button"
@@ -9,25 +9,25 @@
                         data-mdb-target="#collapseOne"
                         aria-expanded="true"
                         aria-controls="collapseOne"
-                    >
-                        Connexion
+                        style="text-decoration: none !important; color: white"                    >
+                        Ici pour sauvegarder vos résultats
                     </button>
-                    </h2>
+                    </h4>
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-mdb-parent="#accordionExample">
                         <div class="accordion-body bg-dark text-white">
                             <div class="col-md-6 offset-md-3">
-                                <p>Enter credentials below to be connected,<br>or follow the Register link to create an account.</p>
+                                {# <p>Enter credentials below to be connected,<br>or follow the Register link to create an account.</p> #}
                                 <form action="login" method="post">
                                     <div class="mb-3">
-                                        <label for="login" class="form-label text-white">Email or Username</label>
+                                        <label for="login" class="form-label text-white">Email ou nom d'utilisateur</label>
                                         <input type="text" class="form-control" id="login" name="login" >
                                     </div>
                                     <div class="mb-3">
-                                        <label for="password" class="form-label text-white">Password</label>
+                                        <label for="password" class="form-label text-white">Mot de passe</label>
                                         <input type="password" class="form-control" id="password" name="password" >
                                     </div>
-                                    <button type="submit" class="btn btn-success">Log me in</button>
-                                    <a href="register" class="btn btn-secondary">Register</a>
+                                    <button type="submit" class="btn btn-success">Connexion</button>
+                                    <a href="register" class="btn btn-secondary">Créer un compte</a>
                                 </form>
                             </div>
                         </div>

@@ -6,6 +6,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    
 }
 
 .background-accueil {
@@ -62,7 +63,8 @@ body {
 }
 
 h1 {
-    color:rgb(132, 191, 219);
+    color:rgb(159, 205, 226);
+    text-shadow:0 0 5px #000000;
 }
 
 ul {
