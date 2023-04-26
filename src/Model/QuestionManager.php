@@ -9,10 +9,7 @@ class QuestionManager extends AbstractManager
 {
     public const TABLE = 'question';
     //showQuestions recupere id du theme
-
-    /**
-     * @return Question[]
-     */
+    
     public function setQuestions(int $id, bool $b50, int $idq50, ?int $choosenAnswerId = null): void
     {
         if (empty($_SESSION['questions'])) {
