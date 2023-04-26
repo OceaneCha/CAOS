@@ -7,21 +7,32 @@
      <form class='form' method="POST" action="/quiz/result" >
     <ul>
    
-{% for question in questions %}
+{% for question in session.questions %}
     <li class="mt-3">{{ question.title }}</li>
-    {% if b50 != 1 %}
-        <a class="btn btn-secondary" href="/themes?id={{ theme.id }}&b50=1&idq50={{question.id}}">
+    {% if session.useJocker50 == false %}
+        <a class="btn btn-secondary" href="/themes?id={{ theme.id }}&b50=1&idq={{question.id}}">
             <i class="fas fa-wand-sparkles"></i> 50/50
         </a>
+        
     {% endif %}
+        <a class="btn btn-secondary" href="/themes?id={{ theme.id }}&b50=0&idq={{question.id}}">
+            <i class="fas fa-wand-sparkles"></i> indice
+        </a>
 
     <div class="btn-group quiz">
         {% for answer in question.answers %}
-            <input type="radio" class="btn-check" name="{{ question.id }}" id="{{ answer.id }}" value="{{ answer.id }}" autocomplete="off" required>
-            <label class="btn btn-outline-secondary btn-secondary" for="{{ answer.id }}">{{ answer.title }}</label>
+        <a
+            class = "btn btn-outline {{ session['question-' ~ question.id] and answer.id == session['question-' ~ question.id] ? 'btn-secondary' : 'btn-primary' }}"
+            href="/themes?id={{theme.id }}&b50=0&idq={{question.id}}&aid={{answer.id}}"
+        >
+        {{ answer.title }} 
+        </a>
+            {# <input type="radio" class="btn-check" name="{{ question.id }}" id="{{ answer.id }}" value="{{ answer.id }}" autocomplete="off" required> #}
+            {# <label class="btn btn-outline-secondary btn-secondary" for="{{ answer.id }}">{{ answer.title }}</label> #}
         {% else %}
             <p>Nothing to display.</p>
         {% endfor %}
+        <br>
     </div>
 
 

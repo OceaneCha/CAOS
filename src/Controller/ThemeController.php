@@ -13,14 +13,6 @@ class ThemeController extends AbstractController
      */
     public function index(): string
     {
-        // Unset session stuff
-        if (isset($_SESSION['themeId'])) {
-            unset($_SESSION['themeId']);
-        }
-        if (isset($_SESSION['questions'])) {
-            unset($_SESSION['questions']);
-        }
-
         //TODO: save $_SESSION['id'] into $user_id
         // destroy / restart session
         // initialize $_SESSION['id'] with $user_id
@@ -40,43 +32,28 @@ class ThemeController extends AbstractController
     /**
      * Show informations for a specific item
      */
-    public function show(int $id, bool $b50 = false, int $idq50 = 0): string
+    public function show(int $id, bool $b50 = false, int $idq = 0, int $aid = null): string
     {
         //echo $id;
+        
         $_SESSION['themeId'] = $id;
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
 
-        // Si la variable de session des questions / réponses n'est pas initialisée :
-        if (!isset($_SESSION['questions'])) {
-            // on affiche question reponses et bouton jocker 5050 avec random
-            $questionManager = new QuestionManager();
-            $questions = $questionManager->showQuestions($id, $b50, $idq50);
-            $_SESSION['questions'] = $questions;
-        } else {
-            // on affiche question reponses et pas de bouton jocker 5050 et pas de random
-            $questionManager = new QuestionManager();
-            $questions = $questionManager->showQuestions($id, $b50, $idq50);
+        if ($b50 == true) {
+            $_SESSION['useJocker50'] = true;
         }
-        //var_dump($_SESSION['questions']);
-        //die;
-
-
-        $answerManager = new AnswerManager();
-        $answers = $answerManager->getAnswers($id, $b50, $idq50);
-
-       // $_SESSION['answers'] = $answers;
-        //var_dump($_SESSION['answers']);
-        //die();
-
+        $questionManager = new QuestionManager();
+        $questionManager->setQuestions($id, $b50, $idq, $aid);
+        
+        
         $twigArgs = [
             'theme' => $theme,
-            'questions' => $questions,
-            'answers' => $answers,
+            // 'questions' => $questions,
             'b50' => $b50,
 
         ];
-
+        $this->twig->addGlobal('session', $_SESSION);
         return $this->twig->render('Quiz/index.html.twig', $twigArgs);
     }
 

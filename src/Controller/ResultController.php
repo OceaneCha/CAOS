@@ -10,9 +10,7 @@ class ResultController extends ThemeController
 {
     public function result()
     {
-        $reponses = $_POST;
-        //var_dump($reponses);
-        //die();
+
         $score = 0;
 
         // Récupération des réponses correctes
@@ -29,15 +27,14 @@ class ResultController extends ThemeController
         foreach ($correctAnswers as $correctAnswer) {
             $questionId = $correctAnswer['question_id'];
             $answerId = $correctAnswer['answer_id'];
-            if (isset($reponses[$questionId]) && $reponses[$questionId] == $answerId) {
+            if (isset($_SESSION['question-' . $questionId]) && $_SESSION['question-' . $questionId] == $answerId) {
                 $score++;
             }
         }
-
+        $this->twig->addGlobal('session', $_SESSION);
         return $this->twig->render('Quiz/result.html.twig', [
             'score' => $score,
             'questions' => $questions,
-            'reponses' => $reponses,
             'correctAnswers' => $correctAnswers,
             'theme' => $theme,
         ]);

@@ -9,30 +9,36 @@ class QuestionManager extends AbstractManager
 {
     public const TABLE = 'question';
     //showQuestions recupere id du theme
-    public function showQuestions(int $id, bool $b50, int $idq50)
+
+    /**
+     * @return Question[]
+     */
+    public function setQuestions(int $id, bool $b50, int $idq50, ?int $choosenAnswerId = null): void
     {
-        if (!$b50) {
+        if (empty($_SESSION['questions'])) {
             $query = "SELECT * FROM " . self::TABLE . " WHERE theme_id = :id
-            LIMIT 10";
+            ORDER BY RAND() LIMIT 10";
             $statement = $this->pdo->prepare($query);
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             $statement->execute();
-            $questions = $statement->fetchAll(PDO::FETCH_OBJ);
-            shuffle($questions);
-        } else {
-            // En mode joker, on récupère les réponses dans la vartiable de session
-            //et on récupère les réponses filtrées avec joker
-            $questions = $_SESSION['questions'];
+            $_SESSION['questions'] = $statement->fetchAll(PDO::FETCH_OBJ);
         }
 
         $answerManager = new AnswerManager();
-        foreach ($questions as $question) {
-            $question->answers = $answerManager->getAnswers($question->id, $b50, $idq50);
-            $question->answers = $answerManager->getAnswers($question->id, $b50, $idq50);
+        foreach ($_SESSION['questions'] as $key => $question) {
+            $_SESSION['question-' . $question->id . '-answers'] = $answerManager->getAnswers($question->id, $b50, $idq50);
+            
+            foreach ($_SESSION['question-' . $question->id . '-answers'] as $answer) {
+                if ($answer->id == $choosenAnswerId) {
+                    $answer->aChoosen = true;
+                    $_SESSION['question-' . $question->id] = $choosenAnswerId;
+                }
+            }
+            //var_dump($answers, $_SESSION, $aid);
+           // if ($aid)die;
+            $_SESSION['questions'][$key]->answers = $_SESSION['question-' . $question->id . '-answers'];
+            
         }
-        //var_dump($questions);
-        //var_dump($questions);
-        return $questions;
     }
     /**************************/
     /* Add a new question     */
