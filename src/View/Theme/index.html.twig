@@ -2,18 +2,25 @@
 
 {% block content %}
     <div class="container justify-content-start flex-grow-1 mt-4 text-center">
-        <h1>Choisissez votre thème</h1>
-        <div class="row mx-auto">
-            {% for theme in themes %}
-                <div class="col-6 text-center">
-                    <a class="btn btn-primary btn-lg text-lg col-8 mt-2" style="background-color: {{theme.color}};" href="/themes?id={{ theme.id }}">
-                        <i class="fas fa-{{theme.icon}} me-2"></i>
-                        {{ theme.name }}
-                    </a>
-                </div>
-            {% else %}
-                <div class="col-12">Nothing to display</div>
+        {% if errors %}
+            {% for error in errors %}
+                <p>{{error}}</p>
             {% endfor %}
-        </div>
+        {% else %}
+        {# No errors block #}
+            {% if user %}
+            {# If logged in #}
+            <h1>Choisissez votre thème, {{user.username}}</h1>
+            <a class="text-danger small" href="logout">Not you? Logout</a>
+            {% else %}
+            <h1>Choisissez votre thème</h1>
+            {% endif %}
+            {# Themes #}
+            {% include 'Theme/_theme.html.twig' %}
+        {% endif %}
+        {% if not user %}
+        {# Add login form #}
+            {% include 'User/login.html.twig' %}
+        {% endif %}
     </div>
 {% endblock %}

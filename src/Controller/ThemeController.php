@@ -13,17 +13,17 @@ class ThemeController extends AbstractController
      */
     public function index(): string
     {
+        //TODO: save $_SESSION['id'] into $user_id
+        // destroy / restart session
+        // initialize $_SESSION['id'] with $user_id
+
+        $userID = (isset($_SESSION['user_id'])) ? $_SESSION['user_id'] : null;
         session_destroy();
         session_start();
-        // Unset session stuff
-        /*
-        if (isset($_SESSION['themeId'])) {
-            unset($_SESSION['themeId']);
+        if ($userID) {
+            $_SESSION['user_id'] = $userID;
         }
-        if (isset($_SESSION['questions'])) {
-            unset($_SESSION['questions']);
-        }
-        */
+
         $themeManager = new ThemeManager();
         $themes = $themeManager->selectAll();
 
@@ -39,7 +39,6 @@ class ThemeController extends AbstractController
         $_SESSION['themeId'] = $id;
         $themeManager = new ThemeManager();
         $theme = $themeManager->selectOneById($id);
-
 
         if ($b50 == true) {
             $_SESSION['useJocker50'] = true;
