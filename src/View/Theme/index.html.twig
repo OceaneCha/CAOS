@@ -10,10 +10,12 @@
         {# No errors block #}
             {% if user %}
             {# If logged in #}
-            <h1>Choisissez votre thème, {{user.username}}</h1>
-            <a class="text-danger small" href="logout">Not you? Logout</a>
+            <div class= "background-accueil">
+            <h2> {{user.username}}, choisis ton quiz !</h2>
+            </div>
+            
             {% else %}
-            <h1>Choisissez votre thème</h1>
+            <h1>Choisis ton quiz :</h1>
             {% endif %}
             {# Themes #}
             {% include 'Theme/_theme.html.twig' %}

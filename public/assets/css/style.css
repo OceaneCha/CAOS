@@ -1,7 +1,18 @@
 body {
     color: white;
     min-height: 100vh;
-    background-image: url('../images/quizMan.webp');
+    background: url('../images/quizMan.webp') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.background-accueil {
+    /* background-color: #3566b6; */
+    color: white;
+    /* text-shadow:0 4px 0 #00ecff, 0 -4px 0 #ff4045; */
+    text-shadow:0 0 4px #000000;
 }
 
 .logo {
@@ -21,33 +32,11 @@ body {
     font-size: 2em;
 }
 
-.red {
-    color: rgb(232, 32, 32);
-    margin: 0.2em;
-
-}
-
-.yellow {
-    color: rgb(245, 230, 62);
-    margin: 0.2em;
-
-}
-
-.blue{
-    color :rgb(145, 145, 237);
-    margin: 0.2em;
-}
-
-.green {
-    color: rgb(179, 241, 169);
-    margin: 0.2em;
-}
-
 .formContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url('../images/musique.jpg');
+   
     background-size: contain;
     background-repeat: no-repeat;
     font-size: 1.2em;
@@ -66,7 +55,10 @@ body {
     flex-direction: column;
     align-items: center;
     font-size: 3em;
-    background-image: url('../images/quizMan.webp');
+    width: 100vh;
+    
+    /* background-size: contain;
+    background-repeat: no-repeat; */
 }
 
 h1 {
@@ -81,17 +73,6 @@ li {
     list-style: none;
 }
 
-/* label {
-    display: block;
-    margin-bottom: 10px;
-    background-color: #ccc;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-li.answer:hover, label:hover {
-    background-color: #ddd;
-} */
 label.btn-secondary {
     background-color: white;
 }
