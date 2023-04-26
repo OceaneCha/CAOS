@@ -20,6 +20,18 @@ class ThemeController extends AbstractController
         if (isset($_SESSION['questions'])) {
             unset($_SESSION['questions']);
         }
+
+        //TODO: save $_SESSION['id'] into $user_id
+        // destroy / restart session
+        // initialize $_SESSION['id'] with $user_id
+
+        $userID = (isset($_SESSION['user_id'])) ? $_SESSION['user_id'] : null;
+        session_destroy();
+        session_start();
+        if ($userID) {
+            $_SESSION['user_id'] = $userID;
+        }
+
         $themeManager = new ThemeManager();
         $themes = $themeManager->selectAll();
 
